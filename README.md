@@ -2,7 +2,7 @@
 
 An automated **n8n workflow** that fetches stories from **Hacker News**, uses **AI-powered summarisation** to generate concise headlines, and logs curated results into **Google Sheets** for easy tracking, analysis, and reuse.
 
-This project is designed for builders, researchers, and operators who want a lightweight, customisable system for monitoring trends and discussions around specific topics.
+This project demonstrates how no-code automation and AI can be combined to build a reliable, scalable content discovery pipeline.
 
 ---
 
@@ -18,47 +18,53 @@ The result is a structured, searchable, and reusable dataset of curated news ite
 
 The workflow automatically:
 
-- Fetches stories and discussions from various sources (Hacker News tool) using configurable keyword searches  
-- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines (you can customise the length of the headline)  
+- Fetches stories and discussions from Hacker News using configurable keyword searches  
+- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines of five words or fewer  
 - Extracts and structures key fields such as title, URL, and date  
 - Validates outputs to ensure completeness and consistency  
 - Skips incomplete or low quality entries  
 - Saves curated results to a Google Sheets spreadsheet  
-- Processes items sequentially with built-in rate limiting  
+- Processes items sequentially with built-in delays  
 
 ---
 
 ## Key Features
 
-### AI-Powered Content Curation  
+### AI-Powered Content Curation
 Uses OpenAI’s GPT-4.1-mini to convert verbose or technical titles into short, high signal headlines suitable for dashboards, reports, or newsletters.
 
-### Structured Data Extraction  
+### Structured Data Extraction
 An AI-powered output parser ensures consistent formatting for titles, URLs, and dates, making the data easy to analyse downstream.
 
-### Smart Filtering and Validation  
+### Smart Filtering and Validation
 Entries missing required fields are automatically skipped to maintain data quality.
 
-### Rate-Limited and Safe Processing  
-Configurable delays between items help avoid API overload and ensure stable execution.
+### Safe Processing with Delays
+Configurable delays between items help prevent API overload and ensure stable execution.
 
-### Batch and Loop Control  
-Processes multiple news items sequentially using n8n’s loop controls.
+### Batch and Loop Control
+Processes multiple Hacker News items sequentially using n8n’s loop controls.
 
-### Fully Customisable Keywords  
+### Fully Customisable Keywords
 Easily adjust the search keywords to track any topic of interest.
 
 ---
 
-## Common Use Cases
-
-- Monitoring specific industries or technologies on Hacker News  
-- Building curated research datasets  
-- Tracking emerging trends and discussions  
-- Powering internal newsletters or weekly reports  
-- Creating topic-specific news archives  
-- Supporting competitive or market intelligence workflows  
-
----
-
 ## Workflow Architecture
+
+The entire automation flow is represented below and rendered directly inside this README.
+
+```mermaid
+flowchart TD
+    A[Manual Trigger]
+    B[Fetch from Hacker News]
+    C[Loop Through Items]
+    D[AI Summarisation<br/>GPT-4.1-mini]
+    E[Data Validation]
+    F[Save to Google Sheets]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
