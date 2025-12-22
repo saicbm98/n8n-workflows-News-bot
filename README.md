@@ -52,7 +52,7 @@ Easily adjust the search keywords to track any topic of interest.
 
 ## Workflow Architecture
 
-The entire automation flow is represented below and rendered directly inside this README.
+The entire automation flow is represented below.
 
 ```mermaid
 flowchart TD
