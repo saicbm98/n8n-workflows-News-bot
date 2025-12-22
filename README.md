@@ -1,35 +1,64 @@
-# n8n-workflows-News-bot
-AI-Powered News Aggregator & Curator
-An automated n8n workflow that fetches content from various news sources (using Hacker News tool), uses AI to generate concise summaries, and logs curated results to Google Sheets for easy tracking and analysis.
+# AI-Powered News Aggregator and Curator (n8n)
 
-What it does
-This workflow automatically:
+An automated **n8n workflow** that fetches stories from **Hacker News**, uses **AI-powered summarisation** to generate concise headlines, and logs curated results into **Google Sheets** for easy tracking, analysis, and reuse.
 
-Retrieves stories and discussions from Hacker News based on customizable keyword searches
-Processes each item through an AI agent (GPT-4.1-mini) to create concise, newsworthy headlines (5 words or less)
-Extracts and structures data (title, URL, date) using an AI-powered output parser
-Validates entries to ensure data quality
-Saves curated results to a Google Sheets spreadsheet
-Key Features
-AI-Powered Content Curation: Leverages OpenAI's GPT-4.1-mini to transform verbose headlines into concise, impactful summaries
-Structured Data Extraction: Ensures consistent output format with validated title, date, and URL fields
-Smart Filtering: Automatically skips incomplete or invalid entries
-Rate-Limited Processing: Includes configurable delays between items to respect API limits
-Batch Processing: Handles multiple items sequentially with automatic loop control
-Customizable Keywords: Easily modify search terms to track any topic of interest
-Use Cases
-Monitor specific topics or industries on Hacker News
-Build curated content databases for research or analysis
-Track trending discussions in your field
-Automate content discovery for newsletters or reports
-Create topic-specific news archives
-Workflow Architecture
-Manual Trigger → Fetch from Hacker News → Loop Through Items → AI Summarization → Data Validation → Save to Google Sheets
+This project is designed for builders, researchers, and operators who want a lightweight, customisable system for monitoring trends and discussions around specific topics.
 
-Technologies
-n8n: Workflow automation platform
-OpenAI API: GPT-4.1-mini for natural language processing and summarization
-Google Sheets API: Structured data storage and tracking
-Hacker News API: Content source
-Customization
-Simply change the keyword parameter in the Hacker News node to track any topic (e.g., "AI", "Startups", "Cybersecurity", "Remote Work", etc.)
+---
+
+## Overview
+
+This workflow continuously collects relevant Hacker News posts based on keyword searches, processes them through an AI agent to create short, newsworthy summaries, validates the extracted data, and stores the final output in Google Sheets.
+
+The result is a structured, searchable, and reusable dataset of curated news items without any manual effort.
+
+---
+
+## What This Workflow Does
+
+The workflow automatically:
+
+- Fetches stories and discussions from Hacker News using configurable keyword searches  
+- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines of five words or fewer  
+- Extracts and structures key fields such as title, URL, and date  
+- Validates outputs to ensure completeness and consistency  
+- Skips incomplete or low quality entries  
+- Saves curated results to a Google Sheets spreadsheet  
+- Processes items sequentially with built-in rate limiting  
+
+---
+
+## Key Features
+
+### AI-Powered Content Curation  
+Uses OpenAI’s GPT-4.1-mini to convert verbose or technical titles into short, high signal headlines suitable for dashboards, reports, or newsletters.
+
+### Structured Data Extraction  
+An AI-powered output parser ensures consistent formatting for titles, URLs, and dates, making the data easy to analyse downstream.
+
+### Smart Filtering and Validation  
+Entries missing required fields are automatically skipped to maintain data quality.
+
+### Rate-Limited and Safe Processing  
+Configurable delays between items help avoid API throttling and ensure stable execution.
+
+### Batch and Loop Control  
+Processes multiple Hacker News items sequentially using n8n’s loop controls.
+
+### Fully Customisable Keywords  
+Easily adjust the search keywords to track any topic of interest.
+
+---
+
+## Common Use Cases
+
+- Monitoring specific industries or technologies on Hacker News  
+- Building curated research datasets  
+- Tracking emerging trends and discussions  
+- Powering internal newsletters or weekly reports  
+- Creating topic-specific news archives  
+- Supporting competitive or market intelligence workflows  
+
+---
+
+## Workflow Architecture
