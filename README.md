@@ -18,8 +18,8 @@ The result is a structured, searchable, and reusable dataset of curated news ite
 
 The workflow automatically:
 
-- Fetches stories and discussions from Hacker News using configurable keyword searches  
-- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines of five words or fewer  
+- Fetches stories and discussions from various sources (Hacker News tool) using configurable keyword searches  
+- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines (you can customise the length of the headline)  
 - Extracts and structures key fields such as title, URL, and date  
 - Validates outputs to ensure completeness and consistency  
 - Skips incomplete or low quality entries  
@@ -40,10 +40,10 @@ An AI-powered output parser ensures consistent formatting for titles, URLs, and 
 Entries missing required fields are automatically skipped to maintain data quality.
 
 ### Rate-Limited and Safe Processing  
-Configurable delays between items help avoid API throttling and ensure stable execution.
+Configurable delays between items help avoid API overload and ensure stable execution.
 
 ### Batch and Loop Control  
-Processes multiple Hacker News items sequentially using n8n’s loop controls.
+Processes multiple news items sequentially using n8n’s loop controls.
 
 ### Fully Customisable Keywords  
 Easily adjust the search keywords to track any topic of interest.
