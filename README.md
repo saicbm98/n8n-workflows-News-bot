@@ -31,7 +31,12 @@ Processes multiple Hacker News items sequentially using n8n's loop controls.
 Easily adjust the search keywords to track any topic of interest.
 ---
 ## Workflow Architecture
-The entire automation flow is represented below.
+
+![n8n Workflow Screenshot](https://github.com/saicbm98/n8n-workflows-News-bot/blob/main/Screenshot%202025-12-24%20133555.png?raw=true)
+
+*Complete n8n workflow showing all nodes and connections*
+
+### Flow Diagram
 ```mermaid
 flowchart TD
     A[Manual Trigger]
@@ -46,29 +51,19 @@ flowchart TD
     D --> E
     E --> F
 ```
-
 ---
-
 ## 🤝 Connect & Support
-
 **Creator:** Sai Medicherla
-
 **Specialties:** AI Operations • Automation Engineering • No-Code AI Solutions
-
 **Currently:** Building AI-powered automation workflows and portfolio projects
-
 **Let's Connect:**
 - 🌐 Portfolio: [https://linkedin-replacer-127790892770.us-west1.run.app/](https://linkedin-replacer-127790892770.us-west1.run.app/)
 - 🐦 X/Twitter: [@mscb160798](https://x.com/mscb160798)
 - 💼 Wellfound: [Sai Medicherla](https://wellfound.com/u/sai-medicherla)
 - 💻 GitHub: [@saicbm98](https://github.com/saicbm98)
 - 📧 Email: [Contact via website](https://linkedin-replacer-127790892770.us-west1.run.app/)
-
 **Open to:** AI Operations roles • Automation Engineering • Product Operations • Remote opportunities
-
 **Availability:** 🟢 Immediate start
-
 ---
-
 ### ⚡ Built with determination
 *After losing LinkedIn access, I chose to build instead of complain. This is one of several projects showcasing AI automation, prompt engineering, and rapid product development.*
