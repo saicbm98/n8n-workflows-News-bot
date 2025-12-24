@@ -51,7 +51,7 @@ flowchart TD
 
 ## 🤝 Connect & Support
 
-**Creator:** Sai Charan Medicherla
+**Creator:** Sai Medicherla
 
 **Specialties:** AI Operations • Automation Engineering • No-Code AI Solutions
 
