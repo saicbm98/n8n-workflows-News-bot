@@ -36,7 +36,7 @@ Manual Trigger → Fetch from Hacker News → Loop Through Items → AI Summaris
 
 ### **Workflow Diagram**
 
-![n8n Workflow Screenshot]([./assets/workflow-screenshot.png](https://github.com/saicbm98/n8n-workflows-News-bot/blob/main/Screenshot%202025-12-24%20133555.png?raw=true)
+![n8n Workflow Screenshot](https://github.com/saicbm98/n8n-workflows-News-bot/blob/main/Screenshot%202025-12-24%20133555.png?raw=true)
 *Complete n8n workflow showing all nodes and connections*
 ```mermaid
 flowchart TD
