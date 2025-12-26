@@ -1,48 +1,49 @@
-# AI-Powered News Aggregator and Curator (n8n)
-An automated **n8n workflow** that fetches stories from **Hacker News**, uses **AI-powered summarisation** to generate concise headlines, and logs curated results into **Google Sheets** for easy tracking, analysis, and reuse.
-This project demonstrates how no-code automation and AI can be combined to build a reliable, scalable content discovery pipeline.
----
-## Overview
-This workflow continuously collects relevant Hacker News posts based on keyword searches, processes them through an AI agent to create short, newsworthy summaries, validates the extracted data, and stores the final output in Google Sheets.
-The result is a structured, searchable, and reusable dataset of curated news items without any manual effort.
----
-## What This Workflow Does
-The workflow automatically:
-- Fetches stories and discussions from Hacker News using configurable keyword searches  
-- Sends each item to an AI agent (GPT-4.1-mini) to generate concise headlines of five words or fewer  
-- Extracts and structures key fields such as title, URL, and date  
-- Validates outputs to ensure completeness and consistency  
-- Skips incomplete or low quality entries  
-- Saves curated results to a Google Sheets spreadsheet  
-- Processes items sequentially with built-in delays  
----
-## Key Features
-### AI-Powered Content Curation
-Uses OpenAI's GPT-4.1-mini to convert verbose or technical titles into short, high signal headlines suitable for dashboards, reports, or newsletters.
-### Structured Data Extraction
-An AI-powered output parser ensures consistent formatting for titles, URLs, and dates, making the data easy to analyse downstream.
-### Smart Filtering and Validation
-Entries missing required fields are automatically skipped to maintain data quality.
-### Safe Processing with Delays
-Configurable delays between items help prevent API overload and ensure stable execution.
-### Batch and Loop Control
-Processes multiple Hacker News items sequentially using n8n's loop controls.
-### Fully Customisable Keywords
-Easily adjust the search keywords to track any topic of interest.
----
-## Workflow Architecture
+# AI-Powered News Aggregator | n8n Workflow
 
-![n8n Workflow Screenshot](https://github.com/saicbm98/n8n-workflows-News-bot/blob/main/Screenshot%202025-12-24%20133555.png?raw=true)
+> **Automating content discovery with AI-powered summarisation and structured data extraction**
 
+---
+
+## 🎯 Project Overview
+
+An automated workflow that fetches stories from Hacker News, generates AI-powered summaries, and logs curated results into Google Sheets for easy tracking and analysis.
+
+**The Problem:** Staying on top of relevant industry news requires constant manual monitoring. Scanning headlines, filtering noise, and organising useful content takes significant daily effort.
+
+**The Solution:** A no-code AI workflow that continuously collects relevant posts, processes them through GPT-4o-mini to create concise headlines, validates the data, and stores structured results in Google Sheets—creating a searchable, reusable news dataset with zero manual effort.
+
+---
+
+## 🚀 What This Demonstrates
+
+### **AI Operations & Automation Engineering Skills**
+- **End-to-end workflow design**: Manual trigger → API fetch → loop processing → LLM summarisation → data validation → spreadsheet storage
+- **Prompt engineering**: Configured AI agent to generate concise 5-word headlines from verbose technical titles
+- **Data pipeline design**: Structured extraction with validation to ensure consistent, clean outputs
+- **Integration orchestration**: Connected Hacker News API, OpenAI GPT-4o-mini, and Google Sheets into a reliable pipeline
+
+### **Operational Thinking**
+This project applies the same operational mindset I've used across insurance analysis, community operations, and customer ops: **identify inefficiency → automate with AI → measure impact**.
+
+---
+
+## 🏗️ Architecture & Workflow
+
+### **High-Level Flow**
+```
+Manual Trigger → Fetch from Hacker News → Loop Through Items → AI Summarisation → Data Validation → Save to Google Sheets
+```
+
+### **Workflow Diagram**
+
+![n8n Workflow Screenshot](./assets/workflow-screenshot.png)
 *Complete n8n workflow showing all nodes and connections*
-
-### Flow Diagram
 ```mermaid
 flowchart TD
     A[Manual Trigger]
     B[Fetch from Hacker News]
     C[Loop Through Items]
-    D[AI Summarisation<br/>GPT-4.1-mini]
+    D[AI Summarisation<br/>GPT-4o-mini]
     E[Data Validation]
     F[Save to Google Sheets]
     A --> B
@@ -51,19 +52,142 @@ flowchart TD
     D --> E
     E --> F
 ```
+
+### **Technical Components**
+
+| Node | Technology | Function |
+|------|------------|----------|
+| **Manual Trigger** | `n8n-nodes-base.manualTrigger` | Initiates workflow execution |
+| **HTTP Request** | Hacker News API | Fetches stories based on keyword searches |
+| **Loop** | `n8n-nodes-base.splitInBatches` | Processes items sequentially with delays |
+| **AI Agent** | `@n8n/n8n-nodes-langchain.agent` | GPT-4o-mini summarisation with structured output |
+| **IF Node** | `n8n-nodes-base.if` | Validates data completeness |
+| **Google Sheets** | `n8n-nodes-base.googleSheets` | Stores curated results |
+
+### **AI Agent Output Structure**
+
+The AI extracts and structures:
+1. **Headline** - Concise 5-word summary of the original title
+2. **URL** - Direct link to the content
+3. **Date** - Publication timestamp
+
 ---
-## 🤝 Connect & Support
-**Creator:** Sai Medicherla
+
+## 🧠 Prompt Engineering
+
+### **Summarisation Strategy**
+```
+Task: Convert verbose or technical titles into short, high-signal headlines
+Constraint: Five words or fewer
+Output: Structured format suitable for dashboards, reports, or newsletters
+```
+
+### **Quality Controls**
+- AI-powered output parser ensures consistent formatting
+- Entries missing required fields are automatically skipped
+- Configurable delays prevent API overload
+
+---
+
+## 📊 Results
+
+| Metric | Value |
+|--------|-------|
+| **Output format** | Structured, searchable Google Sheets dataset |
+| **Data quality** | Auto-validation skips incomplete entries |
+| **Scalability** | Batch processing with rate limiting |
+| **Customisation** | Keyword filters adjustable for any topic |
+
+---
+
+## 🛠️ Technical Stack
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Workflow Engine** | n8n (cloud) | Visual automation platform |
+| **Data Source** | Hacker News API | Tech news aggregation |
+| **LLM** | OpenAI GPT-4o-mini | Content summarisation |
+| **Output Parser** | LangChain | Structured data extraction |
+| **Storage** | Google Sheets API | Curated results repository |
+
+---
+
+## 🔧 Setup & Deployment
+
+### **Prerequisites**
+- n8n instance (cloud or self-hosted)
+- OpenAI API key
+- Google Cloud project with Sheets API enabled
+- OAuth2 credentials for Google Sheets
+
+### **Installation**
+
+1. **Import Workflow**
+```bash
+   # In n8n: Settings → Import from File → Select workflow.json
+```
+
+2. **Configure Credentials**
+   - OpenAI: Add API key in n8n credentials
+   - Google Sheets: Complete OAuth2 flow
+
+3. **Customise Keywords**
+   - Edit the Hacker News fetch node to track topics of interest
+
+4. **Activate & Test**
+   - Run manually or set up scheduled triggers
+   - Check Google Sheets for output
+
+### **Customization Options**
+- **Change data source**: Replace Hacker News with Reddit, RSS feeds, or other APIs
+- **Adjust summarisation**: Modify AI prompt for different headline styles
+- **Switch output destination**: Replace Google Sheets with Notion, Airtable, or database
+- **Add scheduling**: Convert manual trigger to cron-based automation
+
+---
+
+## 🎓 Challenges & Solutions
+
+| Challenge | Solution |
+|-----------|----------|
+| API rate limiting | Built-in delays between item processing |
+| Inconsistent title formats | AI summarisation normalises output |
+| Missing data fields | Validation node skips incomplete entries |
+| Output parser errors | Structured schema with fallback handling |
+
+---
+
+## 📂 Repository Structure
+```
+n8n-news-bot/
+├── assets/
+│   └── workflow-screenshot.png
+├── workflow.json
+└── README.md
+```
+
+---
+
+## 🤝 Connect
+
+**Creator:** Sai Medicherla  
 **Specialties:** AI Operations • Automation Engineering • No-Code AI Solutions
-**Currently:** Building AI-powered automation workflows and portfolio projects
+
 **Let's Connect:**
-- 🌐 Portfolio: [https://linkedin-replacer-127790892770.us-west1.run.app/](https://linkedin-replacer-127790892770.us-west1.run.app/)
+- 🌐 Portfolio: [linkedin-replacer](https://linkedin-replacer-127790892770.us-west1.run.app/)
 - 🐦 X/Twitter: [@mscb160798](https://x.com/mscb160798)
 - 💼 Wellfound: [Sai Medicherla](https://wellfound.com/u/sai-medicherla)
 - 💻 GitHub: [@saicbm98](https://github.com/saicbm98)
-- 📧 Email: [Contact via website](https://linkedin-replacer-127790892770.us-west1.run.app/)
-**Open to:** AI Operations roles • Automation Engineering • Product Operations • Remote opportunities
+
+**Open to:** AI Operations • Automation Engineering • Product Operations  
 **Availability:** 🟢 Immediate start
+
 ---
-### ⚡ Built with determination
-*After losing LinkedIn access, I chose to build instead of complain. This is one of several projects showcasing AI automation, prompt engineering, and rapid product development.*
+
+## 📜 License
+
+MIT License - fork, modify, and use freely.
+
+---
+
+⭐ **If this helped you, consider starring the repo!**
